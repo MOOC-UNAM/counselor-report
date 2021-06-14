@@ -1,14 +1,16 @@
 from mysql.connector import connect, Error
-from setup.config import DB_NAME
+from setup.config import db_host
+from setup.config import db_name
 from setup.config import db_user
 from setup.config import db_pass
 
 def create_students_table():
     try:
         with connect(
-            host = DB_NAME,
+            host = db_host,
+            database = db_name,
             user = db_user,
-            password = db_pass,
+            password = db_pass,            
         ) as connection:
             with connection.cursor() as cursor:
                 try:
@@ -34,5 +36,36 @@ def create_students_table():
                 except Error as e:
                     print(e)
                     return False            
+    except Error as e:
+        print(e)
+
+
+def populate_students_table(students):
+    try:
+        with connect(
+            host = db_host,
+            database = db_name,
+            user = db_user,
+            password = db_pass,
+        ) as connection:
+            with connection.cursor() as cursor:
+                try:
+                    print("Clearing students table...")
+                    cursor.execute("TRUNCATE TABLE students")
+                except Error as e:
+                    print(e)
+                print("Inserting data...")
+                insert_students_query = """
+                    INSERT INTO students
+                    (user,lastname,firstname,email,groupname,consejero,asesor,estatus,fortalezas,trabajo,mejorar,recomendaciones,calificacion)
+                    VALUE(%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s)
+                """
+                try:
+                    cursor.executemany(insert_students_query, students)
+                    connection.commit()
+                    return True
+                except Error as e:
+                    print(e)
+                    return False
     except Error as e:
         print(e)

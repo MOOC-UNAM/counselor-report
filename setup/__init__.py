@@ -1,4 +1,5 @@
-from .config import DB_NAME
+from .config import db_host
+from .config import db_name
 from .config import db_user
 from .config import db_pass
 from .config import html_dir

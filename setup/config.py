@@ -1,5 +1,6 @@
 ## Database config
-DB_NAME = "counselor"
+db_host = "localhost"
+db_name = "counselor"
 db_user = "counselor"
 db_pass = "secret!"
 
