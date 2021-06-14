@@ -35,7 +35,6 @@ def create_students_table():
                     return True
                 except Error as e:
                     print(e)
-                    return False            
     except Error as e:
         print(e)
 
@@ -66,6 +65,26 @@ def populate_students_table(students):
                     return True
                 except Error as e:
                     print(e)
-                    return False
+    except Error as e:
+        print(e)
+
+
+def insert_student_grades(grades):
+    try:
+        with connect(
+            host = db_host,
+            database = db_name,
+            user = db_user,
+            password = db_pass,
+        ) as connection:
+            with connection.cursor() as cursor:
+                try:
+                    for grade in grades:
+                        query = "UPDATE students SET calificacion={} WHERE email='{}'".format(grade[1],grade[0])
+                        cursor.execute(query)
+                        connection.commit()
+                        return True
+                except Error as e:
+                    print(e)
     except Error as e:
         print(e)
