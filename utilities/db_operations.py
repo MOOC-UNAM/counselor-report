@@ -34,6 +34,7 @@ def create_students_table():
                     calificacion FLOAT
                 )
             """)
+            print("The students table has been created")
             return True
         except Error as e:
             print(e)
@@ -55,6 +56,7 @@ def populate_students_table(students):
         try:
             cursor.executemany(insert_students_query, students)
             connection.commit()
+            print("Student data has been inserted")
             return True
         except Error as e:
             print(e)
@@ -65,9 +67,11 @@ def insert_student_grades(grades):
         try:
             for grade in grades:
                 query = "UPDATE students SET calificacion={} WHERE email='{}'".format(grade[1],grade[0])
+                print(query)
                 cursor.execute(query)
                 connection.commit()
-                return True
+            print("Student grades have been inserted")
+            return True
         except Error as e:
             print(e)
 
