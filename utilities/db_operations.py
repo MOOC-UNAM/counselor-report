@@ -77,6 +77,7 @@ def insert_student_grades(grades):
 
 
 def select_students(option):
+    select_query = ""
     if(option == 1):
         select_query = """
                 SELECT lastname,firstname,email,groupname,consejero,asesor,estatus,fortalezas,trabajo,mejorar,recomendaciones,calificacion FROM students WHERE estatus != '' ORDER BY lastname
