@@ -67,7 +67,6 @@ def insert_student_grades(grades):
         try:
             for grade in grades:
                 query = "UPDATE students SET calificacion={} WHERE email='{}'".format(grade[1],grade[0])
-                print(query)
                 cursor.execute(query)
                 connection.commit()
             print("Student grades have been inserted")
