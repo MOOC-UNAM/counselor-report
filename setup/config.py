@@ -16,4 +16,4 @@ pdf_dir = "pdf/"
 
 ## Location for CSV files
 report_file = "csv/report.csv"
-grade_file = "csv/grade.csv"
+grade_file = "csv/grades.csv"
