@@ -1,0 +1,36 @@
+body {
+    font-family: 'open_sanslight', sans-serif;
+    color: #444;
+}
+header {
+    margin-top: 40px;
+    margin-bottom: 60px;
+    padding-bottom: 20px;
+    border-bottom: 1px solid #ef4688;
+}
+header > .col-12:last-child {
+    margin-top: 30px;
+}
+table td:first-child {
+    width: 24%;
+}
+table td {
+    width: 25%;
+}
+table tr:last-child > td {
+    height: 0 !important;
+    padding: 0;
+}
+ul {
+    list-style-type: square;
+}
+.last {
+    border-top: 1px solid #5e4b93;
+    margin-top: 20px;
+    padding-top: 10px;
+}
+#otras {
+    background-color: #fdfdfd;
+    margin-top: 10px;
+    padding: 12px;
+}
